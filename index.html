@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BAR RESTAURANT | Nombre del local</title>
+  <meta name="description" content="Bar & Restaurant. Coctelería, cocina y buen ambiente. Reservas por WhatsApp." />
+  <meta name="theme-color" content="#0b0b0f" />
+
+  <!-- Tipografías (opcional) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0b0f;
+      --card:#12121a;
+      --text:#f2f2f2;
+      --muted:#b7b7c2;
+      --line:rgba(255,255,255,.10);
+      --accent:#d9b56b; /* dorado sobrio */
+      --accent2:#7dd3fc; /* celeste suave para detalles */
+      --radius:18px;
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:radial-gradient(1200px 600px at 20% -10%, rgba(217,181,107,.18), transparent 60%),
+                             radial-gradient(900px 600px at 90% 10%, rgba(125,211,252,.12), transparent 55%),
+                             var(--bg);
+              color:var(--text); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max);margin:auto;padding:0 18px}
+    .topbar{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,11,15,.72);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:12px 0;
+      gap:12px;
+    }
+    .brand{display:flex;align-items:center;gap:10px}
+    .logo{
+      width:38px;height:38px;border-radius:12px;
+      background: linear-gradient(135deg, rgba(217,181,107,.95), rgba(125,211,252,.35));
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+    }
+    .brand h1{font-size:14px;letter-spacing:.6px;margin:0;font-weight:700}
+    .brand span{display:block;color:var(--muted);font-size:12px;font-weight:400}
+
+    .links{display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+    .links a{font-size:13px;color:var(--muted)}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:10px 14px;border-radius:999px;
+      border:1px solid rgba(217,181,107,.35);
+      background: rgba(217,181,107,.10);
+      color:var(--text);font-weight:600;font-size:13px;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .hero{padding:46px 0 22px}
+    .hero-grid{
+      display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:stretch;
+    }
+    .card{
+      background: rgba(18,18,26,.78);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow: 0 18px 60px rgba(0,0,0,.35);
+    }
+    .hero-card{padding:26px}
+    .kicker{color:var(--accent);font-weight:700;letter-spacing:.14em;font-size:12px}
+    .title{
+      font-family:"Playfair Display", serif;
+      font-size:44px;line-height:1.02;margin:10px 0 10px;
+      letter-spacing:.2px;
+    }
+    .subtitle{color:var(--muted);font-size:15px;line-height:1.6;max-width:52ch;margin:0 0 18px}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .btn-primary{
+      border:1px solid rgba(217,181,107,.65);
+      background: linear-gradient(135deg, rgba(217,181,107,.18), rgba(217,181,107,.06));
+    }
+    .btn-ghost{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+    }
+
+    .info-card{padding:22px;display:flex;flex-direction:column;gap:14px}
+    .info-item{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);
+               padding:14px;border-radius:16px;background: rgba(255,255,255,.03)}
+    .info-item b{display:block}
+    .info-item small{color:var(--muted)}
+    .dot{width:10px;height:10px;border-radius:99px;background:var(--accent);margin-top:6px;flex:0 0 auto}
+
+    section{padding:22px 0}
+    .sec-title{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:12px}
+    .sec-title h2{margin:0;font-size:22px;font-weight:800}
+    .sec-title p{margin:0;color:var(--muted);font-size:13px}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .tile{padding:18px}
+    .tile h3{margin:0 0 6px;font-size:15px}
+    .tile p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+
+    .menu{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .menu .tile{padding:18px}
+    .item{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed rgba(255,255,255,.12)}
+    .item:last-child{border-bottom:0}
+    .item .name{font-weight:600}
+    .item .desc{color:var(--muted);font-size:12px;margin-top:2px}
+    .price{color:var(--accent);font-weight:700;white-space:nowrap}
+
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .ph{
+      border-radius:16px;border:1px solid var(--line);
+      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      aspect-ratio: 4 / 3;
+      overflow:hidden;
+      position:relative;
+    }
+    .ph::after{
+      content:"Foto"; position:absolute; inset:auto 10px 10px auto;
+      font-size:12px;color:rgba(255,255,255,.55);
+      border:1px solid rgba(255,255,255,.12);
+      padding:6px 10px;border-radius:999px;background:rgba(0,0,0,.25)
+    }
+
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:stretch}
+    iframe{width:100%;border:0;border-radius:16px;min-height:320px}
+    .footer{padding:26px 0 36px;color:var(--muted);font-size:13px}
+    .footline{border-top:1px solid var(--line);margin-top:18px;padding-top:18px;display:flex;gap:14px;flex-wrap:wrap;justify-content:space-between}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr}
+      .title{font-size:38px}
+      .grid3{grid-template-columns:1fr}
+      .menu{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      .split{grid-template-columns:1fr}
+      .links a{display:none} /* deja solo botón */
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <div class="nav">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <h1>NOMBRE DEL LOCAL</h1>
+            <span>Bar & Restaurant · Ciudad</span>
+          </div>
+        </div>
+
+        <div class="links">
+          <a href="#menu">Menú</a>
+          <a href="#reservas">Reservas</a>
+          <a href="#galeria">Galería</a>
+          <a href="#ubicacion">Ubicación</a>
+          <a class="btn btn-primary" href="https://wa.me/56TU_NUMERO?text=Hola%20quiero%20reservar%20en%20NOMBRE%20DEL%20LOCAL" target="_blank" rel="noreferrer">
+            Reservar por WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="hero" id="inicio">
+        <div class="hero-grid">
+          <div class="card hero-card">
+            <div class="kicker">AMBIENTE · COCINA · COCTELERÍA</div>
+            <h2 class="title">Un bar para comer rico y quedarse.</h2>
+            <p class="subtitle">
+              Cocina honesta, tragos bien hechos y música con onda. Ideal para juntas, citas y celebraciones.
+              <br/>Abierto de <b>martes a domingo</b>.
+            </p>
+            <div class="cta">
+              <a class="btn btn-primary" href="#reservas">Reservar mesa</a>
+              <a class="btn btn-ghost" href="#menu">Ver menú</a>
+            </div>
+          </div>
+
+          <div class="card info-card">
+            <div class="info-item">
+              <div class="dot"></div>
+              <div>
+                <b>Horario</b>
+                <small>Mar–Jue 18:00–01:00 · Vie–Sáb 18:00–03:00 · Dom 13:00–23:00</small>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="dot" style="background:var(--accent2)"></div>
+              <div>
+                <b>Dirección</b>
+                <small>Av. Ejemplo 123, Comuna, Ciudad</small>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="dot" style="background:#a3e635"></div>
+              <div>
+                <b>Reservas</b>
+                <small>WhatsApp · Instagram · Teléfono</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="destacados">
+        <div class="sec-title">
+          <h2>Lo que nos define</h2>
+          <p>3 razones para elegirnos</p>
+        </div>
+        <div class="grid3">
+          <div class="card tile">
+            <h3>Coctelería de autor</h3>
+            <p>Clásicos bien ejecutados + tragos de la casa con ingredientes reales.</p>
+          </div>
+          <div class="card tile">
+            <h3>Cocina para compartir</h3>
+            <p>Tablas, papas, sándwiches y platos pensados para acompañar el carrete.</p>
+          </div>
+          <div class="card tile">
+            <h3>Ambiente & música</h3>
+            <p>Iluminación cálida, buena selección musical y espacio para celebrar.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="menu">
+        <div class="sec-title">
+          <h2>Menú</h2>
+          <p>Ejemplo — cámbialo por el tuyo</p>
+        </div>
+
+        <div class="menu">
+          <div class="card tile">
+            <h3>Comida</h3>
+            <div class="item">
+              <div>
+                <div class="name">Papas rústicas</div>
+                <div class="desc">Alioli / merkén / salsa de la casa</div>
+              </div>
+              <div class="price">$6.500</div>
+            </div>
+            <div class="item">
+              <div>
+                <div class="name">Tabla mixta</div>
+                <div class="desc">Quesos, carnes, encurtidos</div>
+              </div>
+              <div class="price">$14.900</div>
+            </div>
+            <div class="item">
+              <div>
+                <div class="name">Sándwich del día</div>
+                <div class="desc">Pan artesanal + acompañamiento</div>
+              </div>
+              <div class="price">$8.900</div>
+            </div>
+          </div>
+
+          <div class="card tile">
+            <h3>Bar</h3>
+            <div class="item">
+              <div>
+                <div class="name">Piscola premium</div>
+                <div class="desc">Pisco + bebida + hielo</div>
+              </div>
+              <div class="price">$5.500</div>
+            </div>
+            <div class="item">
+              <div>
+                <div class="name">Margarita</div>
+                <div class="desc">Tequila / limón / triple sec</div>
+              </div>
+              <div class="price">$7.900</div>
+            </div>
+            <div class="item">
+              <div>
+                <div class="name">Mocktail</div>
+                <div class="desc">Sin alcohol — fresco y frutal</div>
+              </div>
+              <div class="price">$5.900</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="galeria">
+        <div class="sec-title">
+          <h2>Galería</h2>
+          <p>Reemplaza estos bloques por tus fotos</p>
+        </div>
+        <div class="gallery">
+          <div class="ph"></div>
+          <div class="ph"></div>
+          <div class="ph"></div>
+          <div class="ph"></div>
+          <div class="ph"></div>
+          <div class="ph"></div>
+          <div class="ph"></div>
+          <div class="ph"></div>
+        </div>
+      </section>
+
+      <section id="reservas">
+        <div class="sec-title">
+          <h2>Reservas</h2>
+          <p>Rápido y directo</p>
+        </div>
+
+        <div class="split">
+          <div class="card tile">
+            <h3>Reserva por WhatsApp</h3>
+            <p style="color:var(--muted);line-height:1.6;margin-top:0">
+              Indica: <b>día</b>, <b>hora</b>, <b>cantidad de personas</b> y si celebran algo.
+            </p>
+            <div class="cta">
+              <a class="btn btn-primary" href="https://wa.me/56TU_NUMERO?text=Hola%20quiero%20reservar%20para%20__%20personas%20el%20__%20a%20las%20__" target="_blank" rel="noreferrer">
+                Abrir WhatsApp
+              </a>
+              <a class="btn btn-ghost" href="mailto:reservas@tudominio.cl">reservas@tudominio.cl</a>
+            </div>
+            <p style="color:var(--muted);font-size:12px;margin-bottom:0">
+              *Si hay alta demanda, confirmamos por mensaje.
+            </p>
+          </div>
+
+          <div class="card tile">
+            <h3>Eventos y cumpleaños</h3>
+            <p style="color:var(--muted);line-height:1.6;margin-top:0">
+              Armamos paquetes para grupos, con opciones de consumo mínimo.
+            </p>
+            <div class="cta">
+              <a class="btn btn-primary" href="https://wa.me/56TU_NUMERO?text=Hola%20quiero%20cotizar%20un%20evento%20en%20NOMBRE%20DEL%20LOCAL" target="_blank" rel="noreferrer">
+                Cotizar evento
+              </a>
+              <a class="btn btn-ghost" href="#ubicacion">Ver ubicación</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ubicacion">
+        <div class="sec-title">
+          <h2>Ubicación</h2>
+          <p>Cómo llegar</p>
+        </div>
+
+        <div class="split">
+          <div class="card tile">
+            <h3>Dirección</h3>
+            <p style="color:var(--muted);line-height:1.6;margin-top:0">
+              Av. Ejemplo 123, Comuna, Ciudad<br>
+              <b>Estacionamiento:</b> (sí/no) · <b>Accesibilidad:</b> (sí/no)
+            </p>
+            <p style="color:var(--muted);line-height:1.6">
+              <b>Instagram:</b> @tuinstagram<br>
+              <b>Teléfono:</b> +56 9 XXXX XXXX
+            </p>
+          </div>
+
+          <div class="card tile">
+            <!-- Reemplaza el src por el iframe real de Google Maps -->
+            <iframe
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Santiago%20Chile&output=embed">
+            </iframe>
+          </div>
+        </div>
+      </section>
+
+      <section class="footer">
+        <div class="footline">
+          <div>© <span id="y"></span> NOMBRE DEL LOCAL. Todos los derechos reservados.</div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <a href="#inicio">Volver arriba</a>
+            <a href="https://instagram.com/tuinstagram" target="_blank" rel="noreferrer">Instagram</a>
+            <a href="https://wa.me/56TU_NUMERO" target="_blank" rel="noreferrer">WhatsApp</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
