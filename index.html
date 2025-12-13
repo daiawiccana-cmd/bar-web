@@ -3,394 +3,345 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BAR RESTAURANT | Nombre del local</title>
-  <meta name="description" content="Bar & Restaurant. Coctelería, cocina y buen ambiente. Reservas por WhatsApp." />
+  <title>La Picá del Viagra — Bar Restaurant | La Reina</title>
+  <meta name="description" content="La Picá del Viagra: bar bohemio + restaurant + picada en La Reina. Reservas por WhatsApp." />
   <meta name="theme-color" content="#0b0b0f" />
-
-  <!-- Tipografías (opcional) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
       --bg:#0b0b0f;
-      --card:#12121a;
-      --text:#f2f2f2;
-      --muted:#b7b7c2;
-      --line:rgba(255,255,255,.10);
-      --accent:#d9b56b; /* dorado sobrio */
-      --accent2:#7dd3fc; /* celeste suave para detalles */
-      --radius:18px;
-      --max:1100px;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.04);
+      --line: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --muted2: rgba(255,255,255,.58);
+      --accent: #b6ff4a;
+      --accent2:#7bdcff;
+      --radius: 18px;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --max: 1120px;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:radial-gradient(1200px 600px at 20% -10%, rgba(217,181,107,.18), transparent 60%),
-                             radial-gradient(900px 600px at 90% 10%, rgba(125,211,252,.12), transparent 55%),
-                             var(--bg);
-              color:var(--text); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;}
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max);margin:auto;padding:0 18px}
+    *{ box-sizing:border-box; }
+    html,body{ margin:0; padding:0; background:var(--bg); color:var(--text); font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial; }
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:22px; }
+
+    /* Fondo */
+    .bg{
+      position:fixed; inset:0; pointer-events:none; z-index:-1;
+      background:
+        radial-gradient(1100px 600px at 10% -10%, rgba(123,220,255,.16), transparent 60%),
+        radial-gradient(900px 500px at 90% 0%, rgba(182,255,74,.14), transparent 55%),
+        radial-gradient(900px 800px at 50% 110%, rgba(255,255,255,.06), transparent 60%),
+        linear-gradient(180deg, #0b0b0f, #06060a);
+      filter: saturate(1.05);
+    }
+
+    /* Topbar */
     .topbar{
-      position:sticky;top:0;z-index:50;
+      position:sticky; top:0; z-index:50;
       backdrop-filter: blur(10px);
-      background: rgba(11,11,15,.72);
-      border-bottom:1px solid var(--line);
+      background: rgba(11,11,15,.65);
+      border-bottom: 1px solid var(--line);
     }
-    .nav{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:12px 0;
-      gap:12px;
-    }
-    .brand{display:flex;align-items:center;gap:10px}
+    .topbar .wrap{ display:flex; align-items:center; justify-content:space-between; gap:14px; }
+    .brand{ display:flex; align-items:center; gap:10px; min-width:220px; }
     .logo{
-      width:38px;height:38px;border-radius:12px;
-      background: linear-gradient(135deg, rgba(217,181,107,.95), rgba(125,211,252,.35));
-      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+      width:38px; height:38px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(182,255,74,.9), rgba(123,220,255,.8));
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
     }
-    .brand h1{font-size:14px;letter-spacing:.6px;margin:0;font-weight:700}
-    .brand span{display:block;color:var(--muted);font-size:12px;font-weight:400}
+    .brand b{ letter-spacing:.2px; }
+    .nav{ display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end; }
+    .nav a{ padding:10px 12px; border-radius:12px; color:var(--muted); border:1px solid transparent; }
+    .nav a:hover{ border-color: var(--line); background: var(--panel2); color:var(--text); }
 
-    .links{display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
-    .links a{font-size:13px;color:var(--muted)}
-    .btn{
-      display:inline-flex;align-items:center;gap:10px;
-      padding:10px 14px;border-radius:999px;
-      border:1px solid rgba(217,181,107,.35);
-      background: rgba(217,181,107,.10);
-      color:var(--text);font-weight:600;font-size:13px;
-    }
-    .btn:hover{transform:translateY(-1px)}
-    .hero{padding:46px 0 22px}
-    .hero-grid{
-      display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:stretch;
-    }
+    /* Hero */
+    .hero{ padding:44px 0 18px; }
+    .heroGrid{ display:grid; grid-template-columns: 1.2fr .8fr; gap:18px; align-items:stretch; }
+    @media (max-width: 920px){ .heroGrid{ grid-template-columns:1fr; } }
+
     .card{
-      background: rgba(18,18,26,.78);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .heroMain{ padding:28px; position:relative; overflow:hidden; }
+    .heroMain:before{
+      content:"";
+      position:absolute; inset:-40%;
+      background: radial-gradient(circle at 20% 20%, rgba(182,255,74,.18), transparent 55%),
+                  radial-gradient(circle at 80% 10%, rgba(123,220,255,.14), transparent 55%);
+      transform: rotate(10deg);
+      opacity:.9;
+    }
+    .heroMain > *{ position:relative; }
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 12px; border-radius:999px;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.22);
+      color:var(--muted);
+      font-size:14px;
+    }
+    .dot{ width:10px; height:10px; border-radius:99px; background: var(--accent); box-shadow:0 0 16px rgba(182,255,74,.55); }
+    h1{ margin:14px 0 10px; font-size:44px; line-height:1.05; letter-spacing:-.6px; }
+    @media (max-width:520px){ h1{ font-size:36px; } }
+    .lead{ margin:0 0 18px; color:var(--muted); font-size:16.5px; line-height:1.55; max-width:62ch; }
+
+    .actions{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      font-weight:600;
+    }
+    .btn:hover{ background: rgba(255,255,255,.08); }
+    .btn.primary{
+      border-color: rgba(182,255,74,.45);
+      background: linear-gradient(135deg, rgba(182,255,74,.20), rgba(123,220,255,.14));
+    }
+    .btn.primary:hover{ filter: brightness(1.05); }
+    .metaRow{ display:flex; gap:12px; flex-wrap:wrap; margin-top:16px; }
+    .pill{
+      padding:10px 12px; border-radius: 14px;
       border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow: 0 18px 60px rgba(0,0,0,.35);
-    }
-    .hero-card{padding:26px}
-    .kicker{color:var(--accent);font-weight:700;letter-spacing:.14em;font-size:12px}
-    .title{
-      font-family:"Playfair Display", serif;
-      font-size:44px;line-height:1.02;margin:10px 0 10px;
-      letter-spacing:.2px;
-    }
-    .subtitle{color:var(--muted);font-size:15px;line-height:1.6;max-width:52ch;margin:0 0 18px}
-    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    .btn-primary{
-      border:1px solid rgba(217,181,107,.65);
-      background: linear-gradient(135deg, rgba(217,181,107,.18), rgba(217,181,107,.06));
-    }
-    .btn-ghost{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      color:var(--text);
+      background: rgba(0,0,0,.20);
+      color: var(--muted);
+      font-size:14px;
     }
 
-    .info-card{padding:22px;display:flex;flex-direction:column;gap:14px}
-    .info-item{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);
-               padding:14px;border-radius:16px;background: rgba(255,255,255,.03)}
-    .info-item b{display:block}
-    .info-item small{color:var(--muted)}
-    .dot{width:10px;height:10px;border-radius:99px;background:var(--accent);margin-top:6px;flex:0 0 auto}
+    /* Side card */
+    .heroSide{ padding:18px; display:grid; gap:12px; }
+    .sideBlock{ padding:14px; border-radius:14px; border:1px solid var(--line); background: rgba(0,0,0,.18); }
+    .sideTitle{ font-weight:700; margin:0 0 8px; }
+    .sideText{ margin:0; color:var(--muted); line-height:1.5; font-size:14.5px; }
+    .sideText b{ color:var(--text); }
 
-    section{padding:22px 0}
-    .sec-title{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:12px}
-    .sec-title h2{margin:0;font-size:22px;font-weight:800}
-    .sec-title p{margin:0;color:var(--muted);font-size:13px}
-    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .tile{padding:18px}
-    .tile h3{margin:0 0 6px;font-size:15px}
-    .tile p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+    /* Sections */
+    section{ padding:28px 0; }
+    .sectionTitle{ display:flex; align-items:flex-end; justify-content:space-between; gap:14px; margin-bottom:14px; }
+    .sectionTitle h2{ margin:0; font-size:24px; letter-spacing:-.2px; }
+    .sectionTitle p{ margin:0; color:var(--muted2); font-size:14px; }
 
-    .menu{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-    .menu .tile{padding:18px}
-    .item{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed rgba(255,255,255,.12)}
-    .item:last-child{border-bottom:0}
-    .item .name{font-weight:600}
-    .item .desc{color:var(--muted);font-size:12px;margin-top:2px}
-    .price{color:var(--accent);font-weight:700;white-space:nowrap}
+    .grid3{ display:grid; grid-template-columns: repeat(3,1fr); gap:14px; }
+    @media (max-width: 900px){ .grid3{ grid-template-columns:1fr; } }
+    .infoCard{ padding:16px; }
+    .infoCard h3{ margin:0 0 8px; font-size:16px; }
+    .infoCard p{ margin:0; color:var(--muted); line-height:1.55; }
 
-    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    /* Menu */
+    .menuGrid{ display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
+    @media (max-width: 900px){ .menuGrid{ grid-template-columns:1fr; } }
+    .menuCard{ padding:16px; }
+    .menuCard h3{ margin:0 0 10px; font-size:16px; }
+    .menuList{ margin:0; padding:0; list-style:none; display:grid; gap:10px; }
+    .menuItem{ display:flex; justify-content:space-between; gap:14px; padding:10px 12px; border-radius:14px; border:1px solid var(--line); background: rgba(0,0,0,.16); }
+    .menuItem span{ color:var(--muted); }
+    .price{ color:var(--text); font-weight:700; white-space:nowrap; }
+
+    /* Gallery */
+    .gallery{ display:grid; grid-template-columns: repeat(3,1fr); gap:12px; }
+    @media (max-width: 900px){ .gallery{ grid-template-columns:1fr; } }
     .ph{
-      border-radius:16px;border:1px solid var(--line);
-      background: linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      aspect-ratio: 4 / 3;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
       overflow:hidden;
-      position:relative;
+      min-height: 220px;
+      display:flex;
+      align-items:flex-end;
+      padding:14px;
+      color: rgba(255,255,255,.75);
     }
-    .ph::after{
-      content:"Foto"; position:absolute; inset:auto 10px 10px auto;
-      font-size:12px;color:rgba(255,255,255,.55);
-      border:1px solid rgba(255,255,255,.12);
-      padding:6px 10px;border-radius:999px;background:rgba(0,0,0,.25)
-    }
+    .ph small{ color:rgba(255,255,255,.55); display:block; margin-top:4px; }
 
-    .split{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:stretch}
-    iframe{width:100%;border:0;border-radius:16px;min-height:320px}
-    .footer{padding:26px 0 36px;color:var(--muted);font-size:13px}
-    .footline{border-top:1px solid var(--line);margin-top:18px;padding-top:18px;display:flex;gap:14px;flex-wrap:wrap;justify-content:space-between}
+    /* Map + Contact */
+    .twoCol{ display:grid; grid-template-columns: 1.2fr .8fr; gap:14px; }
+    @media (max-width: 900px){ .twoCol{ grid-template-columns:1fr; } }
+    .map{ padding:0; overflow:hidden; }
+    .map iframe{ width:100%; height:360px; border:0; display:block; }
+    .contact{ padding:16px; display:grid; gap:10px; }
+    .line{ height:1px; background: var(--line); margin:6px 0; }
+    .kv{ display:flex; justify-content:space-between; gap:12px; color:var(--muted); }
+    .kv b{ color:var(--text); }
 
-    /* Responsive */
-    @media (max-width: 900px){
-      .hero-grid{grid-template-columns:1fr}
-      .title{font-size:38px}
-      .grid3{grid-template-columns:1fr}
-      .menu{grid-template-columns:1fr}
-      .gallery{grid-template-columns:repeat(2,1fr)}
-      .split{grid-template-columns:1fr}
-      .links a{display:none} /* deja solo botón */
-    }
+    footer{ padding:18px 0 40px; color:var(--muted2); font-size:13.5px; }
+    .footRow{ display:flex; gap:12px; justify-content:space-between; flex-wrap:wrap; }
   </style>
 </head>
 
 <body>
+  <div class="bg"></div>
+
   <header class="topbar">
     <div class="wrap">
-      <div class="nav">
-        <div class="brand">
-          <div class="logo" aria-hidden="true"></div>
-          <div>
-            <h1>NOMBRE DEL LOCAL</h1>
-            <span>Bar & Restaurant · Ciudad</span>
-          </div>
-        </div>
-
-        <div class="links">
-          <a href="#menu">Menú</a>
-          <a href="#reservas">Reservas</a>
-          <a href="#galeria">Galería</a>
-          <a href="#ubicacion">Ubicación</a>
-          <a class="btn btn-primary" href="https://wa.me/56TU_NUMERO?text=Hola%20quiero%20reservar%20en%20NOMBRE%20DEL%20LOCAL" target="_blank" rel="noreferrer">
-            Reservar por WhatsApp
-          </a>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <b>La Picá del Viagra</b><br>
+          <span style="color:var(--muted); font-size:13px;">Bar • Restaurant • Picada | La Reina</span>
         </div>
       </div>
+
+      <nav class="nav" aria-label="Navegación">
+        <a href="#menu">Menú</a>
+        <a href="#galeria">Galería</a>
+        <a href="#ubicacion">Ubicación</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
     </div>
   </header>
 
-  <main>
-    <div class="wrap">
-      <section class="hero" id="inicio">
-        <div class="hero-grid">
-          <div class="card hero-card">
-            <div class="kicker">AMBIENTE · COCINA · COCTELERÍA</div>
-            <h2 class="title">Un bar para comer rico y quedarse.</h2>
-            <p class="subtitle">
-              Cocina honesta, tragos bien hechos y música con onda. Ideal para juntas, citas y celebraciones.
-              <br/>Abierto de <b>martes a domingo</b>.
-            </p>
-            <div class="cta">
-              <a class="btn btn-primary" href="#reservas">Reservar mesa</a>
-              <a class="btn btn-ghost" href="#menu">Ver menú</a>
-            </div>
+  <main class="wrap">
+    <section class="hero">
+      <div class="heroGrid">
+        <div class="card heroMain">
+          <div class="kicker"><span class="dot"></span> Abierto todos los días • 12:00 a 02:00</div>
+          <h1>La Picá del Viagra</h1>
+          <p class="lead">
+            Bohemia chilena, comida con cariño y tragos bien servidos.
+            <br>En <b>La Reina</b>. Ven con hambre, ven con ganas.
+          </p>
+
+          <div class="actions">
+            <!-- REEMPLAZA TU NUMERO AQUÍ: +569XXXXXXXX -->
+            <a class="btn primary" href="https://wa.me/56948901374?text=Hola%20La%20Pic%C3%A1%20del%20Viagra%2C%20quiero%20hacer%20una%20reserva%20por%20favor." target="_blank" rel="noopener">
+              Reservar por WhatsApp
+            </a>
+            <a class="btn" href="https://instagram.com/lapicadelviagra.oficial" target="_blank" rel="noopener">
+              Ver Instagram
+            </a>
           </div>
 
-          <div class="card info-card">
-            <div class="info-item">
-              <div class="dot"></div>
-              <div>
-                <b>Horario</b>
-                <small>Mar–Jue 18:00–01:00 · Vie–Sáb 18:00–03:00 · Dom 13:00–23:00</small>
-              </div>
-            </div>
-            <div class="info-item">
-              <div class="dot" style="background:var(--accent2)"></div>
-              <div>
-                <b>Dirección</b>
-                <small>Av. Ejemplo 123, Comuna, Ciudad</small>
-              </div>
-            </div>
-            <div class="info-item">
-              <div class="dot" style="background:#a3e635"></div>
-              <div>
-                <b>Reservas</b>
-                <small>WhatsApp · Instagram · Teléfono</small>
-              </div>
-            </div>
+          <div class="metaRow">
+            <div class="pill">📍 La Reina</div>
+            <div class="pill">🍸 Bar bohemio</div>
+            <div class="pill">🍽️ Cocina + picada</div>
           </div>
         </div>
-      </section>
 
-      <section id="destacados">
-        <div class="sec-title">
-          <h2>Lo que nos define</h2>
-          <p>3 razones para elegirnos</p>
-        </div>
-        <div class="grid3">
-          <div class="card tile">
-            <h3>Coctelería de autor</h3>
-            <p>Clásicos bien ejecutados + tragos de la casa con ingredientes reales.</p>
+        <aside class="card heroSide">
+          <div class="sideBlock">
+            <p class="sideTitle">Horario</p>
+            <p class="sideText"><b>Lunes a Domingo</b><br>12:00 – 02:00</p>
           </div>
-          <div class="card tile">
-            <h3>Cocina para compartir</h3>
-            <p>Tablas, papas, sándwiches y platos pensados para acompañar el carrete.</p>
+          <div class="sideBlock">
+            <p class="sideTitle">Reservas</p>
+            <p class="sideText">Reserva por WhatsApp y te confirmamos al tiro.</p>
           </div>
-          <div class="card tile">
-            <h3>Ambiente & música</h3>
-            <p>Iluminación cálida, buena selección musical y espacio para celebrar.</p>
+          <div class="sideBlock">
+            <p class="sideTitle">Ambiente</p>
+            <p class="sideText">Bohemio, buena mesa y energía de picada real.</p>
           </div>
-        </div>
-      </section>
+        </aside>
+      </div>
+    </section>
 
-      <section id="menu">
-        <div class="sec-title">
+    <section id="menu">
+      <div class="sectionTitle">
+        <div>
           <h2>Menú</h2>
-          <p>Ejemplo — cámbialo por el tuyo</p>
+          <p>Dejé ejemplos sin precio para que los completes después.</p>
+        </div>
+        <p>Precios referenciales • editables</p>
+      </div>
+
+      <div class="menuGrid">
+        <div class="card menuCard">
+          <h3>🍸 Tragos & Bar</h3>
+          <ul class="menuList">
+            <li class="menuItem"><span>Pisco Sour</span><span class="price">$____</span></li>
+            <li class="menuItem"><span>Cerveza (lata / schop)</span><span class="price">$____</span></li>
+            <li class="menuItem"><span>Vaso de vino</span><span class="price">$____</span></li>
+            <li class="menuItem"><span>Trago de autor</span><span class="price">$____</span></li>
+          </ul>
         </div>
 
-        <div class="menu">
-          <div class="card tile">
-            <h3>Comida</h3>
-            <div class="item">
-              <div>
-                <div class="name">Papas rústicas</div>
-                <div class="desc">Alioli / merkén / salsa de la casa</div>
-              </div>
-              <div class="price">$6.500</div>
-            </div>
-            <div class="item">
-              <div>
-                <div class="name">Tabla mixta</div>
-                <div class="desc">Quesos, carnes, encurtidos</div>
-              </div>
-              <div class="price">$14.900</div>
-            </div>
-            <div class="item">
-              <div>
-                <div class="name">Sándwich del día</div>
-                <div class="desc">Pan artesanal + acompañamiento</div>
-              </div>
-              <div class="price">$8.900</div>
-            </div>
-          </div>
-
-          <div class="card tile">
-            <h3>Bar</h3>
-            <div class="item">
-              <div>
-                <div class="name">Piscola premium</div>
-                <div class="desc">Pisco + bebida + hielo</div>
-              </div>
-              <div class="price">$5.500</div>
-            </div>
-            <div class="item">
-              <div>
-                <div class="name">Margarita</div>
-                <div class="desc">Tequila / limón / triple sec</div>
-              </div>
-              <div class="price">$7.900</div>
-            </div>
-            <div class="item">
-              <div>
-                <div class="name">Mocktail</div>
-                <div class="desc">Sin alcohol — fresco y frutal</div>
-              </div>
-              <div class="price">$5.900</div>
-            </div>
-          </div>
+        <div class="card menuCard">
+          <h3>🍔 Cocina & Picada</h3>
+          <ul class="menuList">
+            <li class="menuItem"><span>Hamburguesa</span><span class="price">$____</span></li>
+            <li class="menuItem"><span>Papas (con agregado)</span><span class="price">$____</span></li>
+            <li class="menuItem"><span>Tabla para compartir</span><span class="price">$____</span></li>
+            <li class="menuItem"><span>Sandwich / especial</span><span class="price">$____</span></li>
+          </ul>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="galeria">
-        <div class="sec-title">
+    <section id="galeria">
+      <div class="sectionTitle">
+        <div>
           <h2>Galería</h2>
-          <p>Reemplaza estos bloques por tus fotos</p>
+          <p>Después te enseño a subir tus fotos para que se vean acá.</p>
         </div>
-        <div class="gallery">
-          <div class="ph"></div>
-          <div class="ph"></div>
-          <div class="ph"></div>
-          <div class="ph"></div>
-          <div class="ph"></div>
-          <div class="ph"></div>
-          <div class="ph"></div>
-          <div class="ph"></div>
-        </div>
-      </section>
+        <p>Fotos del lugar • comida • tragos</p>
+      </div>
 
-      <section id="reservas">
-        <div class="sec-title">
-          <h2>Reservas</h2>
-          <p>Rápido y directo</p>
-        </div>
+      <div class="gallery">
+        <div class="ph">Foto 1 <small>(Lugar / barra)</small></div>
+        <div class="ph">Foto 2 <small>(Comida)</small></div>
+        <div class="ph">Foto 3 <small>(Tragos)</small></div>
+      </div>
+    </section>
 
-        <div class="split">
-          <div class="card tile">
-            <h3>Reserva por WhatsApp</h3>
-            <p style="color:var(--muted);line-height:1.6;margin-top:0">
-              Indica: <b>día</b>, <b>hora</b>, <b>cantidad de personas</b> y si celebran algo.
-            </p>
-            <div class="cta">
-              <a class="btn btn-primary" href="https://wa.me/56TU_NUMERO?text=Hola%20quiero%20reservar%20para%20__%20personas%20el%20__%20a%20las%20__" target="_blank" rel="noreferrer">
-                Abrir WhatsApp
-              </a>
-              <a class="btn btn-ghost" href="mailto:reservas@tudominio.cl">reservas@tudominio.cl</a>
-            </div>
-            <p style="color:var(--muted);font-size:12px;margin-bottom:0">
-              *Si hay alta demanda, confirmamos por mensaje.
-            </p>
-          </div>
-
-          <div class="card tile">
-            <h3>Eventos y cumpleaños</h3>
-            <p style="color:var(--muted);line-height:1.6;margin-top:0">
-              Armamos paquetes para grupos, con opciones de consumo mínimo.
-            </p>
-            <div class="cta">
-              <a class="btn btn-primary" href="https://wa.me/56TU_NUMERO?text=Hola%20quiero%20cotizar%20un%20evento%20en%20NOMBRE%20DEL%20LOCAL" target="_blank" rel="noreferrer">
-                Cotizar evento
-              </a>
-              <a class="btn btn-ghost" href="#ubicacion">Ver ubicación</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="ubicacion">
-        <div class="sec-title">
+    <section id="ubicacion">
+      <div class="sectionTitle">
+        <div>
           <h2>Ubicación</h2>
-          <p>Cómo llegar</p>
+          <p>Inserta tu mapa real (iframe de Google Maps).</p>
+        </div>
+        <p>La Reina • Santiago</p>
+      </div>
+
+      <div class="twoCol">
+        <div class="card map">
+          <!-- REEMPLAZA ESTE IFRAME POR EL TUYO (Google Maps -> Compartir -> Insertar mapa) -->
+          <iframe
+            src="https://www.google.com/maps?q=La%20Reina%20Santiago%20Chile&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Mapa - La Picá del Viagra">
+          </iframe>
         </div>
 
-        <div class="split">
-          <div class="card tile">
-            <h3>Dirección</h3>
-            <p style="color:var(--muted);line-height:1.6;margin-top:0">
-              Av. Ejemplo 123, Comuna, Ciudad<br>
-              <b>Estacionamiento:</b> (sí/no) · <b>Accesibilidad:</b> (sí/no)
-            </p>
-            <p style="color:var(--muted);line-height:1.6">
-              <b>Instagram:</b> @tuinstagram<br>
-              <b>Teléfono:</b> +56 9 XXXX XXXX
-            </p>
-          </div>
+        <div class="card contact" id="contacto">
+          <h3 style="margin:0;">Contacto</h3>
+          <div class="line"></div>
 
-          <div class="card tile">
-            <!-- Reemplaza el src por el iframe real de Google Maps -->
-            <iframe
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps?q=Santiago%20Chile&output=embed">
-            </iframe>
-          </div>
-        </div>
-      </section>
+          <div class="kv"><span>📍 Dirección</span><b>(Leonardo da Vinci 7161, La Reina)</b></div>
+          <div class="kv"><span>🕒 Horario</span><b>Lun–Dom 12:00–02:00</b></div>
+          <div class="kv"><span>📷 Instagram</span><b>@lapicadelviagra.oficial</b></div>
 
-      <section class="footer">
-        <div class="footline">
-          <div>© <span id="y"></span> NOMBRE DEL LOCAL. Todos los derechos reservados.</div>
-          <div style="display:flex;gap:12px;flex-wrap:wrap">
-            <a href="#inicio">Volver arriba</a>
-            <a href="https://instagram.com/tuinstagram" target="_blank" rel="noreferrer">Instagram</a>
-            <a href="https://wa.me/56TU_NUMERO" target="_blank" rel="noreferrer">WhatsApp</a>
-          </div>
+          <div class="line"></div>
+
+          <a class="btn primary" href="https://wa.me/56TU_NUMERO?text=Hola%20La%20Pic%C3%A1%20del%20Viagra%2C%20quiero%20hacer%20una%20reserva%20por%20favor." target="_blank" rel="noopener">
+            Reservar por WhatsApp
+          </a>
+
+          <a class="btn" href="https://instagram.com/lapicadelviagra.oficial" target="_blank" rel="noopener">
+            Abrir Instagram
+          </a>
+
+          <p style="margin:6px 0 0; color:var(--muted2); font-size:13.5px; line-height:1.5;">
+            Consejo: agrega fotos y precios cuando puedas. Con eso la web queda 10/10 para convertir.
+          </p>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footRow">
+        <span>© <span id="y"></span> La Picá del Viagra</span>
+        <span>Hecho para GitHub Pages • La Reina</span>
+      </div>
+    </footer>
   </main>
 
   <script>
