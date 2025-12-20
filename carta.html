@@ -1,117 +1,229 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Carta | La Picá del Viagra</title>
 
+  <!-- Tipografías PRO -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
+    :root{
+      --bg:#0b0b0d;
+      --txt:#f4f4f5;
+      --muted:rgba(255,255,255,.72);
+      --line:rgba(255,255,255,.10);
+      --accent:#fbbf24;
+      --shadow: 0 12px 28px rgba(0,0,0,.45);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
     body{
       margin:0;
-      font-family:"Poppins", sans-serif;
-      background:#0b0b0d;
-      color:#f4f4f5;
+      font-family:"Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--txt);
+      background:
+        radial-gradient(1000px 600px at 30% -10%, rgba(251,191,36,.12), transparent 60%),
+        radial-gradient(900px 500px at 90% 20%, rgba(81,91,212,.10), transparent 55%),
+        var(--bg);
     }
-    a{color:inherit;text-decoration:none}
+    a{color:inherit}
 
-    header{
-      padding:16px;
-      border-bottom:1px solid rgba(255,255,255,.1);
+    /* Header simple */
+    .header{
       display:flex;
-      justify-content:space-between;
       align-items:center;
+      justify-content:space-between;
+      padding:14px 14px;
+      border-bottom:1px solid var(--line);
+      background:rgba(10,10,10,.65);
+      backdrop-filter: blur(10px);
+      position:sticky;
+      top:0;
+      z-index:50;
     }
-    header h1{
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      min-width:0;
+    }
+    .logoImg{
+      width:44px; height:44px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      object-fit:cover;
+      display:block;
+    }
+    .brand h1{
       margin:0;
       font-family:"Montserrat", sans-serif;
-      font-size:18px;
+      font-size:16px;
+      letter-spacing:.2px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
-    .back{
-      font-size:14px;
-      opacity:.8;
+    .brand p{
+      margin:2px 0 0;
+      color:var(--muted);
+      font-size:12.5px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
-    main{
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+      text-decoration:none;
+      font-weight:700;
+      cursor:pointer;
+    }
+    .btn:hover{ background:rgba(255,255,255,.10); }
+    .btn-primary{
+      background:var(--accent);
+      border-color:rgba(0,0,0,.15);
+      color:#111;
+      box-shadow: 0 12px 28px rgba(251,191,36,.18);
+    }
+
+    .wrap{
       max-width:980px;
-      margin:auto;
-      padding:20px 14px 60px;
+      margin:0 auto;
+      padding:18px 14px 70px;
     }
-
-    .section{
-      margin-top:28px;
-    }
-    .section h2{
+    .sectionTitle{
       font-family:"Montserrat", sans-serif;
       font-size:18px;
-      margin-bottom:14px;
+      margin:22px 0 12px;
+      letter-spacing:.2px;
     }
-
     .grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
       gap:12px;
     }
-
     .card{
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:16px;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:var(--radius);
       padding:14px;
-      background:rgba(255,255,255,.04);
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
     }
-
-    .card strong{
+    .card h4{
+      margin:0;
+      font-family:"Montserrat", sans-serif;
+      font-size:14.5px;
+      letter-spacing:.2px;
       display:flex;
       justify-content:space-between;
-      font-size:14.5px;
+      gap:10px;
+      align-items:flex-start;
     }
-
-    footer{
-      margin-top:50px;
-      text-align:center;
+    .price{
+      color:rgba(255,255,255,.88);
+      font-weight:800;
+      white-space:nowrap;
+    }
+    .note{
+      color:rgba(255,255,255,.70);
       font-size:13px;
-      opacity:.6;
+      margin-top:10px;
+    }
+    footer{
+      margin-top:34px;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+      color:rgba(255,255,255,.60);
+      font-size:13px;
+      text-align:center;
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <h1>🍽️ Carta</h1>
-  <a class="back" href="index.html">← Volver</a>
-</header>
-
-<main>
-
-  <section class="section">
-    <h2>Para comer</h2>
-    <div class="grid">
-      <div class="card"><strong>Lomo pobre <span>$13.500</span></strong></div>
-      <div class="card"><strong>Lomo saltado <span>$13.500</span></strong></div>
-      <div class="card"><strong>Lomo c/a <span>$12.000</span></strong></div>
-      <div class="card"><strong>Pernil c/a <span>$17.000</span></strong></div>
+  <!-- HEADER -->
+  <div class="header">
+    <div class="brand">
+      <!-- Ajusta si tu logo está en otra ruta. Por tu repo, parece estar: logo_pica.jpeg -->
+      <img class="logoImg" src="logo_pica.jpeg" alt="La Picá del Viagra">
+      <div>
+        <h1>Carta / Menú</h1>
+        <p>La Picá del Viagra</p>
+      </div>
     </div>
-  </section>
 
-  <section class="section">
-    <h2>Bebidas</h2>
-    <div class="grid">
-      <div class="card"><strong>Bebidas <span>$1.800</span></strong></div>
-      <div class="card"><strong>Agua <span>$1.500</span></strong></div>
-      <div class="card"><strong>Jugo natural <span>$3.700</span></strong></div>
-      <div class="card"><strong>Té o café <span>$2.000</span></strong></div>
-    </div>
-  </section>
+    <a class="btn btn-primary" href="index.html">← Volver</a>
+  </div>
 
-</main>
+  <main class="wrap">
 
-<footer>
-  © 2025 La Picá del Viagra
-</footer>
+    <section id="menu">
+      <div class="sectionTitle">🍽️ Para comer</div>
+      <div class="grid">
+        <div class="card"><h4><span>Lomo pobre</span><span class="price">$13.500</span></h4></div>
+        <div class="card"><h4><span>Lomo saltado</span><span class="price">$13.500</span></h4></div>
+        <div class="card"><h4><span>Lomo c/a</span><span class="price">$12.000</span></h4></div>
+        <div class="card"><h4><span>Pernil c/a</span><span class="price">$17.000</span></h4></div>
+
+        <div class="card"><h4><span>Cazuela c/a</span><span class="price">$8.000</span></h4></div>
+        <div class="card"><h4><span>Carne al jugo c/a</span><span class="price">$8.000</span></h4></div>
+        <div class="card"><h4><span>Pescado frito c/a</span><span class="price">$8.000</span></h4></div>
+        <div class="card"><h4><span>Arrollado c/a</span><span class="price">$8.000</span></h4></div>
+        <div class="card"><h4><span>Prietas nogadas c/a</span><span class="price">$8.000</span></h4></div>
+
+        <div class="card"><h4><span>Empanada camarón queso</span><span class="price">$3.800</span></h4></div>
+        <div class="card"><h4><span>Empanada mechada queso</span><span class="price">$3.800</span></h4></div>
+        <div class="card"><h4><span>Empanada queso</span><span class="price">$3.300</span></h4></div>
+
+        <div class="card"><h4><span>Chorrillana chica</span><span class="price">$10.000</span></h4></div>
+        <div class="card"><h4><span>Chorrillana grande</span><span class="price">$15.000</span></h4></div>
+
+        <div class="card"><h4><span>Salchipapa</span><span class="price">$10.000</span></h4></div>
+        <div class="card"><h4><span>Papas fritas (individual)</span><span class="price">$4.000</span></h4></div>
+        <div class="card"><h4><span>Papas fritas (mediana)</span><span class="price">$7.000</span></h4></div>
+        <div class="card"><h4><span>Papas fritas (grande)</span><span class="price">$11.000</span></h4></div>
+      </div>
+
+      <p class="note">🧩 Agregados: arroz, papas cocidas, papas mayo.</p>
+
+      <div class="sectionTitle">🍻 Para tomar</div>
+      <div class="grid">
+        <div class="card"><h4><span>Jarra borgoña</span><span class="price">$14.000</span></h4></div>
+        <div class="card"><h4><span>Medio borgoña</span><span class="price">$5.000</span></h4></div>
+        <div class="card"><h4><span>Caña</span><span class="price">$2.500</span></h4></div>
+        <div class="card"><h4><span>Vino 750cc Medalla Real</span><span class="price">$15.000</span></h4></div>
+        <div class="card"><h4><span>Vino 750cc 120</span><span class="price">$8.000</span></h4></div>
+      </div>
+
+      <div class="sectionTitle">🥤 Bebidas / agua / té</div>
+      <div class="grid">
+        <div class="card"><h4><span>Bebidas (Coca / Fanta / Sprite)</span><span class="price">$1.800</span></h4></div>
+        <div class="card"><h4><span>Agua</span><span class="price">$1.500</span></h4></div>
+        <div class="card"><h4><span>Jugo natural (piña / frutilla)</span><span class="price">$3.700</span></h4></div>
+        <div class="card"><h4><span>Té o café</span><span class="price">$2.000</span></h4></div>
+      </div>
+
+      <p class="note">*Precios sujetos a cambio. Promos se actualizan por Instagram.</p>
+    </section>
+
+    <footer>
+      © 2025 La Picá del Viagra
+    </footer>
+
+  </main>
 
 </body>
 </html>
