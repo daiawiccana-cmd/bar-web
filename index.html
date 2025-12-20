@@ -60,6 +60,7 @@
       border-radius:999px;
       background:rgba(255,255,255,.04);
       white-space:nowrap;
+      text-decoration:none;
     }
     .icons{
       display:flex; gap:10px; align-items:center;
@@ -93,19 +94,23 @@
       align-items:center;
       min-width:0;
     }
-
-    /* ✅ ÚNICO CAMBIO: logo ahora es IMG, no texto */
     .logo{
-      width:44px;
-      height:44px;
+      width:44px; height:44px;
       border-radius:14px;
+      background:linear-gradient(135deg, rgba(251,191,36,.35), rgba(255,255,255,.06));
       border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.06);
-      padding:4px;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:900;
+      font-family:"Montserrat", sans-serif;
+      overflow:hidden;
+    }
+    .logo img{
+      width:100%;
+      height:100%;
       object-fit:contain;
       display:block;
+      padding:4px;
     }
-
     .brand h1{
       margin:0;
       font-family:"Montserrat", sans-serif;
@@ -301,15 +306,6 @@
       gap:10px;
       align-items:flex-start;
     }
-    .address{
-      color:rgba(255,255,255,.85);
-      font-size:14px;
-      border:1px dashed rgba(255,255,255,.16);
-      background:rgba(255,255,255,.03);
-      padding:10px 12px;
-      border-radius:16px;
-      width:100%;
-    }
     .rowBtns{ display:flex; gap:10px; flex-wrap:wrap; }
 
     /* Animación suave SOLO Uber/Waze */
@@ -355,9 +351,13 @@
   <!-- TOP BAR -->
   <div class="topbar">
     <div class="left">
-      <span class="chip">📍 Leonardo da Vinci 7161, La Reina</span>
-      <a class="chip" href="https://wa.me/56948901374?text=Hola%20vengo%20de%20la%20web%20de%20La%20Pic%C3%A1%20del%20Viagra%20%F0%9F%8D%BB" target="_blank" rel="noopener">
-        💬 WhatsApp: +56 9 4890 1374
+      <!-- SOLO ICONO WHATSAPP (sin número) -->
+      <a class="chip"
+         href="https://wa.me/56948901374?text=Hola%20vengo%20de%20la%20web%20de%20La%20Pic%C3%A1%20del%20Viagra%20%F0%9F%8D%BB"
+         target="_blank"
+         rel="noopener"
+         aria-label="WhatsApp">
+        💬
       </a>
     </div>
 
@@ -371,8 +371,10 @@
   <!-- HEADER -->
   <div class="header">
     <div class="brand">
-      <!-- ✅ ÚNICO CAMBIO: antes era <div class="logo">LP</div> -->
-      <img class="logo" src="img/logo%20pica.jpeg" alt="La Picá del Viagra">
+      <!-- LOGO REAL (ruta exacta: img/logo pica.jpeg) -->
+      <div class="logo">
+        <img src="img/logo%20pica.jpeg" alt="La Picá del Viagra">
+      </div>
       <div>
         <h1>La Picá del Viagra</h1>
         <p>Un clásico para comer, tomar y pasarla bien</p>
@@ -468,10 +470,6 @@
       <div class="sectionTitle">🧭 Cómo llegar</div>
 
       <div class="how">
-        <div class="address">
-          <strong>Dirección:</strong> Leonardo da Vinci 7161, La Reina, Santiago
-        </div>
-
         <div class="rowBtns">
           <!-- Botón Google Maps -->
           <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Leonardo+da+Vinci+7161,+La+Reina,+Chile" target="_blank" rel="noopener">
@@ -509,6 +507,7 @@
     </section>
 
     <footer>
+      Leonardo da Vinci 7161, La Reina, Santiago<br>
       © 2025 La Picá del Viagra
     </footer>
 
@@ -548,6 +547,7 @@
 
 </body>
 </html>
+
 
 
 
