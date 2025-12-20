@@ -18,7 +18,7 @@
       --txt:#f4f4f5;
       --muted:rgba(255,255,255,.72);
       --line:rgba(255,255,255,.10);
-      --accent:#fbbf24;
+      --accent:#fbbf24;      /* amarillo CTA */
       --ig1:#f58529; --ig2:#dd2a7b; --ig3:#8134af; --ig4:#515bd4;
       --wa:#25D366;
       --shadow: 0 12px 28px rgba(0,0,0,.45);
@@ -28,144 +28,157 @@
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family:"Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--txt);
-      background:
-        radial-gradient(1000px 600px at 30% -10%, rgba(251,191,36,.12), transparent 60%),
-        radial-gradient(900px 500px at 90% 20%, rgba(81,91,212,.10), transparent 55%),
-        var(--bg);
+      background: radial-gradient(1000px 600px at 30% -10%, rgba(251,191,36,.12), transparent 60%),
+                  radial-gradient(900px 500px at 90% 20%, rgba(81,91,212,.10), transparent 55%),
+                  var(--bg);
     }
-
     a{color:inherit}
 
-    /* Barra superior */
+    /* Barra superior tipo pro */
     .topbar{
       background:#0a0a0a;
       border-bottom:1px solid var(--line);
       padding:10px 14px;
       font-size:13px;
+      color:rgba(255,255,255,.85);
       display:flex;
-      justify-content:space-between;
-      align-items:center;
       gap:10px;
+      align-items:center;
+      justify-content:space-between;
     }
-
+    .topbar .left{
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+    }
     .chip{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
       padding:6px 10px;
-      border-radius:999px;
       border:1px solid rgba(255,255,255,.12);
+      border-radius:999px;
       background:rgba(255,255,255,.04);
-      text-decoration:none;
       white-space:nowrap;
     }
-
-    .icons{display:flex; gap:10px}
-
+    .icons{
+      display:flex; gap:10px; align-items:center;
+    }
     .iconbtn{
       width:36px; height:36px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      display:inline-flex; align-items:center; justify-content:center;
       border-radius:10px;
       border:1px solid rgba(255,255,255,.14);
       background:rgba(255,255,255,.04);
       text-decoration:none;
     }
+    .iconbtn:hover{ background:rgba(255,255,255,.08); }
 
-    /* HEADER */
+    /* Header + hamburguesa */
     .header{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      padding:14px;
+      padding:14px 14px;
       border-bottom:1px solid var(--line);
       background:rgba(10,10,10,.65);
-      backdrop-filter:blur(10px);
+      backdrop-filter: blur(10px);
       position:sticky;
       top:0;
       z-index:50;
     }
-
     .brand{
       display:flex;
       gap:12px;
       align-items:center;
+      min-width:0;
     }
 
+    /* ✅ ÚNICO CAMBIO: logo ahora es IMG, no texto */
     .logo{
       width:44px;
       height:44px;
       border-radius:14px;
       border:1px solid rgba(255,255,255,.12);
-      object-fit:contain;
-      background:rgba(255,255,255,.04);
+      background:rgba(255,255,255,.06);
       padding:4px;
+      object-fit:contain;
+      display:block;
     }
 
     .brand h1{
       margin:0;
       font-family:"Montserrat", sans-serif;
       font-size:18px;
+      letter-spacing:.3px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
-
     .brand p{
       margin:2px 0 0;
-      font-size:12.5px;
       color:var(--muted);
+      font-size:12.5px;
     }
-
     .burger{
       width:44px; height:44px;
       border-radius:14px;
       border:1px solid rgba(255,255,255,.14);
       background:rgba(255,255,255,.04);
+      display:flex; align-items:center; justify-content:center;
       cursor:pointer;
-      font-size:18px;
     }
+    .burger:active{ transform: scale(.98); }
 
-    /* Drawer */
+    /* Drawer lateral */
     .overlay{
       position:fixed; inset:0;
       background:rgba(0,0,0,.55);
       display:none;
       z-index:60;
     }
-
     .drawer{
-      position:fixed;
-      top:0; left:0;
-      width:min(320px,86vw);
+      position:fixed; top:0; left:0;
+      width:min(320px, 86vw);
       height:100%;
-      background:#111;
+      background:linear-gradient(180deg, rgba(18,18,22,.98), rgba(10,10,12,.98));
+      border-right:1px solid rgba(255,255,255,.10);
       transform:translateX(-105%);
-      transition:.25s;
+      transition:transform .25s ease;
       z-index:70;
       padding:16px;
     }
+    .drawer.open{ transform:translateX(0); }
+    .overlay.open{ display:block; }
 
-    .drawer.open{transform:translateX(0)}
-    .overlay.open{display:block}
-
+    .drawer h3{
+      margin:8px 0 12px;
+      font-family:"Montserrat", sans-serif;
+      font-size:16px;
+      letter-spacing:.2px;
+    }
     .nav a{
       display:flex;
-      justify-content:space-between;
-      padding:12px;
+      padding:12px 12px;
       border-radius:14px;
-      border:1px solid rgba(255,255,255,.1);
-      margin-bottom:10px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
       text-decoration:none;
+      margin-bottom:10px;
+      align-items:center;
+      justify-content:space-between;
     }
+    .nav a:hover{ background:rgba(255,255,255,.07); }
 
-    /* Hero */
+    /* Hero tipo pro */
     .hero{
       position:relative;
       min-height:62vh;
       display:flex;
       align-items:flex-end;
-      border-bottom:1px solid var(--line);
       overflow:hidden;
+      border-bottom:1px solid var(--line);
     }
-
     .hero .bg{
       position:absolute; inset:0;
       background:
@@ -173,29 +186,43 @@
         url("https://images.unsplash.com/photo-1525268323446-0505b6fe7778?auto=format&fit=crop&w=1400&q=70");
       background-size:cover;
       background-position:center;
+      filter:saturate(1.05) contrast(1.05);
+      transform:scale(1.02);
     }
-
     .hero .content{
       position:relative;
+      z-index:2;
       padding:22px 14px 26px;
+      width:100%;
       max-width:980px;
-      margin:auto;
+      margin:0 auto;
     }
-
     .hero h2{
+      margin:0 0 10px;
       font-family:"Montserrat", sans-serif;
       font-size:34px;
-      margin:0 0 10px;
+      line-height:1.05;
+      letter-spacing:.4px;
       text-transform:uppercase;
+    }
+    .hero p{
+      margin:0 0 16px;
+      color:rgba(255,255,255,.88);
+      font-size:15.5px;
+      max-width:52ch;
     }
 
     .ctaRow{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
+      align-items:center;
     }
-
     .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
       padding:12px 16px;
       border-radius:14px;
       border:1px solid rgba(255,255,255,.14);
@@ -203,86 +230,325 @@
       text-decoration:none;
       font-weight:700;
     }
-
+    .btn:hover{ background:rgba(255,255,255,.10); }
     .btn-primary{
       background:var(--accent);
+      border-color:rgba(0,0,0,.15);
       color:#111;
+      box-shadow: 0 12px 28px rgba(251,191,36,.18);
+    }
+    .btn-primary:hover{ filter:brightness(.98); }
+
+    .btn-ig{
+      background: linear-gradient(45deg,var(--ig1),var(--ig2),var(--ig3),var(--ig4));
+      border:none;
+      color:white;
+      box-shadow: 0 12px 28px rgba(221,42,123,.18);
     }
 
-    /* WhatsApp flotante */
+    /* Contenido */
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:20px 14px 80px;
+    }
+
+    .sectionTitle{
+      font-family:"Montserrat", sans-serif;
+      font-size:18px;
+      margin:28px 0 12px;
+      letter-spacing:.2px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+      gap:12px;
+    }
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:var(--radius);
+      padding:14px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.25);
+    }
+    .card h4{
+      margin:0 0 10px;
+      font-family:"Montserrat", sans-serif;
+      font-size:14.5px;
+      letter-spacing:.2px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .price{
+      color:rgba(255,255,255,.88);
+      font-weight:800;
+      white-space:nowrap;
+    }
+    .desc{ margin:0; color:var(--muted); font-size:13.5px; line-height:1.35; }
+
+    .note{
+      color:rgba(255,255,255,.70);
+      font-size:13px;
+      margin-top:10px;
+    }
+
+    /* “Cómo llegar” pro */
+    .how{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .address{
+      color:rgba(255,255,255,.85);
+      font-size:14px;
+      border:1px dashed rgba(255,255,255,.16);
+      background:rgba(255,255,255,.03);
+      padding:10px 12px;
+      border-radius:16px;
+      width:100%;
+    }
+    .rowBtns{ display:flex; gap:10px; flex-wrap:wrap; }
+
+    /* Animación suave SOLO Uber/Waze */
+    @keyframes pulseSoft {
+      0%   { transform:scale(1); box-shadow:0 10px 24px rgba(0,0,0,.22); }
+      50%  { transform:scale(1.03); box-shadow:0 18px 34px rgba(0,0,0,.32); }
+      100% { transform:scale(1); box-shadow:0 10px 24px rgba(0,0,0,.22); }
+    }
+    .btn-pulse{ animation:pulseSoft 1.8s ease-in-out infinite; }
+
+    /* WhatsApp flotante como la imagen */
     .waFloat{
       position:fixed;
       right:16px;
       bottom:16px;
       width:58px;
       height:58px;
-      border-radius:50%;
+      border-radius:999px;
       background:var(--wa);
+      box-shadow: var(--shadow);
       display:flex;
       align-items:center;
       justify-content:center;
       z-index:90;
+      text-decoration:none;
+      border:3px solid rgba(255,255,255,.18);
+    }
+    .waFloat:active{ transform:scale(.98); }
+
+    footer{
+      margin-top:40px;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+      color:rgba(255,255,255,.60);
+      font-size:13px;
+      text-align:center;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- TOPBAR -->
+  <!-- TOP BAR -->
   <div class="topbar">
-    <div>
+    <div class="left">
       <span class="chip">📍 Leonardo da Vinci 7161, La Reina</span>
-      <a class="chip" href="https://wa.me/56948901374" target="_blank">💬 WhatsApp</a>
+      <a class="chip" href="https://wa.me/56948901374?text=Hola%20vengo%20de%20la%20web%20de%20La%20Pic%C3%A1%20del%20Viagra%20%F0%9F%8D%BB" target="_blank" rel="noopener">
+        💬 WhatsApp: +56 9 4890 1374
+      </a>
     </div>
+
     <div class="icons">
-      <a class="iconbtn" href="https://instagram.com/Lapicadelviagra.oficial" target="_blank">📷</a>
-      <a class="iconbtn" href="https://facebook.com" target="_blank">f</a>
+      <!-- Cambia link IG si quieres -->
+      <a class="iconbtn" href="https://instagram.com/Lapicadelviagra.oficial" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+      <a class="iconbtn" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">f</a>
     </div>
   </div>
 
   <!-- HEADER -->
   <div class="header">
     <div class="brand">
-      <!-- ÚNICO CAMBIO: LOGO -->
-      <img src="img/logo pica.jpeg" alt="La Picá del Viagra" class="logo">
+      <!-- ✅ ÚNICO CAMBIO: antes era <div class="logo">LP</div> -->
+      <img class="logo" src="img/logo%20pica.jpeg" alt="La Picá del Viagra">
       <div>
         <h1>La Picá del Viagra</h1>
         <p>Un clásico para comer, tomar y pasarla bien</p>
       </div>
     </div>
-    <button class="burger" id="openMenu">☰</button>
+
+    <button class="burger" id="openMenu" aria-label="Abrir menú">☰</button>
   </div>
 
-  <!-- Drawer -->
+  <!-- DRAWER -->
   <div class="overlay" id="overlay"></div>
   <aside class="drawer" id="drawer">
+    <h3>Menú</h3>
     <nav class="nav">
-      <a href="#menu" onclick="closeDrawer()">Carta</a>
-      <a href="#llegar" onclick="closeDrawer()">Cómo llegar</a>
-      <a href="#contacto" onclick="closeDrawer()">Contacto</a>
+      <a href="#menu" onclick="closeDrawer()">Carta / Menú <span>›</span></a>
+      <a href="#llegar" onclick="closeDrawer()">Cómo llegar <span>›</span></a>
+      <a href="#contacto" onclick="closeDrawer()">Contacto <span>›</span></a>
     </nav>
   </aside>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="bg"></div>
+    <div class="content">
+      <h2>La Picá del Viagra</h2>
+      <p>Te esperamos en La Reina. Atención por orden de llegada. Ven por el plato del día, una chelita y buena conversa.</p>
+
+      <div class="ctaRow">
+        <a class="btn btn-primary" href="#menu">📄 Revisa nuestra carta aquí</a>
+        <a class="btn btn-ig" href="https://instagram.com/Lapicadelviagra.oficial" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn" href="#llegar">📍 Cómo llegar</a>
+      </div>
+    </div>
+  </section>
+
+  <main class="wrap">
+
+    <!-- MENÚ / CARTA -->
+    <section id="menu">
+      <div class="sectionTitle">🍽️ Para comer</div>
+      <div class="grid">
+
+        <div class="card"><h4><span>Lomo pobre</span><span class="price">$13.500</span></h4></div>
+        <div class="card"><h4><span>Lomo saltado</span><span class="price">$13.500</span></h4></div>
+        <div class="card"><h4><span>Lomo c/a</span><span class="price">$12.000</span></h4></div>
+        <div class="card"><h4><span>Pernil c/a</span><span class="price">$17.000</span></h4></div>
+
+        <div class="card"><h4><span>Cazuela c/a</span><span class="price">$8.000</span></h4></div>
+        <div class="card"><h4><span>Carne al jugo c/a</span><span class="price">$8.000</span></h4></div>
+        <div class="card"><h4><span>Pescado frito c/a</span><span class="price">$8.000</span></h4></div>
+        <div class="card"><h4><span>Arrollado c/a</span><span class="price">$8.000</span></h4></div>
+        <div class="card"><h4><span>Prietas nogadas c/a</span><span class="price">$8.000</span></h4></div>
+
+        <div class="card"><h4><span>Empanada camarón queso</span><span class="price">$3.800</span></h4></div>
+        <div class="card"><h4><span>Empanada mechada queso</span><span class="price">$3.800</span></h4></div>
+        <div class="card"><h4><span>Empanada queso</span><span class="price">$3.300</span></h4></div>
+
+        <div class="card"><h4><span>Chorrillana chica</span><span class="price">$10.000</span></h4></div>
+        <div class="card"><h4><span>Chorrillana grande</span><span class="price">$15.000</span></h4></div>
+
+        <div class="card"><h4><span>Salchipapa</span><span class="price">$10.000</span></h4></div>
+        <div class="card"><h4><span>Papas fritas (individual)</span><span class="price">$4.000</span></h4></div>
+        <div class="card"><h4><span>Papas fritas (mediana)</span><span class="price">$7.000</span></h4></div>
+        <div class="card"><h4><span>Papas fritas (grande)</span><span class="price">$11.000</span></h4></div>
+      </div>
+
+      <p class="note">🧩 Agregados: arroz, papas cocidas, papas mayo.</p>
+
+      <div class="sectionTitle">🍻 Para tomar</div>
+      <div class="grid">
+        <div class="card"><h4><span>Jarra borgoña</span><span class="price">$14.000</span></h4></div>
+        <div class="card"><h4><span>Medio borgoña</span><span class="price">$5.000</span></h4></div>
+        <div class="card"><h4><span>Caña</span><span class="price">$2.500</span></h4></div>
+        <div class="card"><h4><span>Vino 750cc Medalla Real</span><span class="price">$15.000</span></h4></div>
+        <div class="card"><h4><span>Vino 750cc 120</span><span class="price">$8.000</span></h4></div>
+      </div>
+
+      <div class="sectionTitle">🥤 Bebidas / agua / té</div>
+      <div class="grid">
+        <div class="card">
+          <h4><span>Bebidas (Coca / Fanta / Sprite)</span><span class="price">$1.800</span></h4>
+        </div>
+        <div class="card"><h4><span>Agua</span><span class="price">$1.500</span></h4></div>
+        <div class="card"><h4><span>Jugo natural (piña / frutilla)</span><span class="price">$3.700</span></h4></div>
+        <div class="card"><h4><span>Té o café</span><span class="price">$2.000</span></h4></div>
+      </div>
+
+      <p class="note">*Precios sujetos a cambio. Promos se actualizan por Instagram.</p>
+    </section>
+
+    <!-- CÓMO LLEGAR -->
+    <section id="llegar">
+      <div class="sectionTitle">🧭 Cómo llegar</div>
+
+      <div class="how">
+        <div class="address">
+          <strong>Dirección:</strong> Leonardo da Vinci 7161, La Reina, Santiago
+        </div>
+
+        <div class="rowBtns">
+          <!-- Botón Google Maps -->
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Leonardo+da+Vinci+7161,+La+Reina,+Chile" target="_blank" rel="noopener">
+            📍 Abrir en Google Maps
+          </a>
+
+          <!-- Uber / Waze (animación suave) -->
+          <a class="btn btn-pulse" href="https://m.uber.com/ul/?action=setPickup&dropoff[formatted_address]=Leonardo%20da%20Vinci%207161%2C%20La%20Reina%2C%20Santiago" target="_blank" rel="noopener">
+            🚗 Uber
+          </a>
+          <a class="btn btn-pulse" href="https://waze.com/ul?q=Leonardo%20da%20Vinci%207161%20La%20Reina%20Santiago&navigate=yes" target="_blank" rel="noopener">
+            🧭 Waze
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+      <div class="sectionTitle">📞 Contacto</div>
+      <div class="grid">
+        <div class="card">
+          <h4><span>WhatsApp</span><span class="price">+56 9 4890 1374</span></h4>
+          <p class="desc">Respuesta rápida para reservas y consultas.</p>
+        </div>
+        <div class="card">
+          <h4><span>Instagram</span><span class="price">@Lapicadelviagra.oficial</span></h4>
+          <p class="desc">Promos, historias y novedades.</p>
+        </div>
+        <div class="card">
+          <h4><span>Horario</span><span class="price">12:00 – 02:00</span></h4>
+          <p class="desc">Lunes a Domingo.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 La Picá del Viagra
+    </footer>
+
+  </main>
+
+  <!-- WhatsApp flotante (igual estilo) -->
+  <a class="waFloat"
+     href="https://wa.me/56948901374?text=Hola%20vengo%20de%20la%20web%20de%20La%20Pic%C3%A1%20del%20Viagra%20%F0%9F%8D%BB"
+     target="_blank"
+     rel="noopener"
+     aria-label="WhatsApp">
+    <!-- Icono simple -->
+    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M16 3C9.38 3 4 8.07 4 14.33c0 2.48.88 4.77 2.38 6.6L5 29l8.34-2.2c1.82.93 3.9 1.46 6.1 1.46 6.62 0 12-5.07 12-11.33S22.62 3 16 3Z" fill="white" opacity=".92"/>
+      <path d="M23.2 19.7c-.3.8-1.6 1.5-2.2 1.6-.5.1-1.1.2-3.6-.7-3-1.2-4.9-4-5.1-4.3-.2-.3-1.2-1.6-1.2-3s.7-2 .9-2.3c.2-.3.5-.4.7-.4h.5c.2 0 .5 0 .7.6.3.8 1 2.7 1.1 2.9.1.2.1.4 0 .6-.1.2-.2.4-.3.5-.2.2-.3.4-.4.5-.2.2-.3.4-.1.8.2.4.8 1.3 1.7 2.1 1.2 1.1 2.1 1.4 2.5 1.6.3.1.6.1.8-.1.2-.2 1-1.1 1.2-1.5.2-.4.5-.3.8-.2.3.1 2 .9 2.3 1.1.3.2.6.3.7.5.1.1.1.8-.2 1.6Z" fill="#25D366"/>
+    </svg>
+  </a>
 
   <script>
     const overlay = document.getElementById('overlay');
     const drawer = document.getElementById('drawer');
     const openMenu = document.getElementById('openMenu');
 
-    openMenu.onclick = () => {
+    function openDrawer(){
       overlay.classList.add('open');
       drawer.classList.add('open');
     }
-    overlay.onclick = () => {
+    function closeDrawer(){
       overlay.classList.remove('open');
       drawer.classList.remove('open');
     }
-    function closeDrawer(){
-      overlay.click();
-    }
+
+    openMenu.addEventListener('click', openDrawer);
+    overlay.addEventListener('click', closeDrawer);
+    window.closeDrawer = closeDrawer;
   </script>
 
 </body>
 </html>
+
 
 
 
